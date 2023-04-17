@@ -1,4 +1,4 @@
-package com.example.demoroomdb
+package com.example.demoroomdb.roomdb
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -6,8 +6,9 @@ import androidx.room.*
 @Dao
 interface ContactDAO {
 
-    @Insert
-    suspend fun insertData(contact: Contact)
+    //
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertData(contact: Contact):Long
 
     @Update
     suspend fun updateData(contact: Contact)
