@@ -3,8 +3,9 @@
 2.DataBinding\
 3.RecyclerView\
 4.Button Click Events Using Binding
-
 ![](https://raw.githubusercontent.com/ashfaque-harrier/DemoRoomDB/master/Screenshot_20230418_125450.png)
+
+
 
 ## Installation
 ```sh
