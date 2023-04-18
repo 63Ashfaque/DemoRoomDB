@@ -5,6 +5,8 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.Date
 
+
+//indices is use for unique record Name or Phone
 @Entity(tableName = "contactTable", indices = [Index(value = ["name","phone"], unique = true)])
 data class Contact(
 

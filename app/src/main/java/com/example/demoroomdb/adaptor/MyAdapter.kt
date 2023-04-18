@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demoroomdb.databinding.ItemUserCardViewBinding
-import com.example.demoroomdb.model.UserItem
+import com.example.demoroomdb.roomdb.Contact
 
-class MyAdapter(private val items: List<UserItem>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(private var items: List<Contact>, private val clickListener: MyClickListener) :
+    RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -15,15 +16,30 @@ class MyAdapter(private val items: List<UserItem>) : RecyclerView.Adapter<MyAdap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        val item = items[position]
+        holder.bind(item,clickListener)
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount(): Int {
+        return items.size
+    }
 
-    inner class ViewHolder(private val mBinding: ItemUserCardViewBinding) : RecyclerView.ViewHolder(mBinding.root) {
-        fun bind(item: UserItem) {
-            mBinding.itemVariable = item
-            mBinding.executePendingBindings()
+
+    class ViewHolder(private val itemBinding: ItemUserCardViewBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
+
+        fun bind(item: Contact, clickListener1: MyClickListener) {
+            itemBinding.itemVariable = item
+            itemBinding.clickListener = clickListener1
+            itemBinding.executePendingBindings()
         }
+
     }
+
+    interface MyClickListener {
+        fun onUpdateItemClick(item: Contact)
+        fun onDeleteItemClick(item: Contact)
+    }
+
+
 }
