@@ -1,4 +1,4 @@
-# DemoRoomDB\
+# DemoRoomDB
 1.RoomDataBase\
 2.DataBinding\
 3.RecyclerView\
@@ -7,7 +7,7 @@
 
 
 
-## Installation
+## 
 ```sh
     def room_version = "2.5.1"
     implementation "androidx.room:room-runtime:$room_version"
